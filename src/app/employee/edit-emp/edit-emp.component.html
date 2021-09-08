@@ -1,0 +1,81 @@
+<div class="d-flex justify-content-between">
+
+    <h3>Edit Employee Data</h3>
+
+    <button mat-button (click)="onClose()">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+{{dataSourceFromSibling | json}}
+<hr/> {{service.formData | json}}
+
+
+
+<div style="overflow: auto; height: 450px;">
+    <form #form="ngForm" (submit)="onSubmitEdit(form)" autocomplete="off">
+
+        <div class="mt-3 input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Employee Id</span>
+            </div>
+            <input readonly="readonly" type="text" class="form-control" name="EmployeeID" #EmployeeID="ngModel" [(ngModel)]="service.formData.employeeId">
+        </div>
+        <div class="mt-4 input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">First Name</span>
+            </div>
+            <input required minlength="2" type="text" class="form-control" name="firstName" #firstName="ngModel" [(ngModel)]="service.formData.firstName">
+        </div>
+        <div class="text-left text-danger" *ngIf="firstName.invalid && firstName.touched">
+            Please enter FirstName .
+        </div>
+
+        <div class="mt-4 input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Last Name</span>
+            </div>
+            <input required minlength="2" type="text" class="form-control" name="LastName" #LastName="ngModel" [(ngModel)]="service.formData.lastName">
+        </div>
+        <div class="text-left text-danger" *ngIf="LastName.invalid && LastName.touched">
+            Please enter LastName .
+        </div>
+
+        <div class="mt-4 input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Employee Code</span>
+            </div>
+            <input required minlength="2" type="text" class="form-control" name="EmpCode" #EmpCode="ngModel" [(ngModel)]="service.formData.empCode">
+        </div>
+        <div class="text-left text-danger" *ngIf="EmpCode.invalid && EmpCode.touched">
+            Please enter EmpCode .
+        </div>
+
+        <div class="mt-4 input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Position</span>
+            </div>
+            <input required minlength="2" type="text" class="form-control" name="Position" #Position="ngModel" [(ngModel)]="service.formData.position">
+        </div>
+        <div class="text-left text-danger" *ngIf="Position.invalid && Position.touched">
+            Please enter Position .
+        </div>
+
+        <div class="mt-4 input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Office</span>
+            </div>
+            <input required minlength="2" type="text" class="form-control" name="Office" #Office="ngModel" [(ngModel)]="service.formData.office">
+        </div>
+        <div class="text-left text-danger" *ngIf="Office.invalid && Office.touched">
+            Please enter Office .
+        </div>
+
+
+
+
+        <button class="mt-4" mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Edit</button>
+
+
+    </form>
+
+</div>

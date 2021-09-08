@@ -1,0 +1,65 @@
+<div class="container">
+
+    <!-- <mat-form-field>
+        <input matInput placeholder="Filter">
+        <input matInput (keyup)="filterHandler($any($event.target).value)" placeholder="Filter">
+    </mat-form-field> -->
+    <!-- 
+    <mat-form-field>
+        <input matInput (keyup)="filterHandler($any($event.target).value)" placeholder="Search Contacts">
+    </mat-form-field>&nbsp;&nbsp; -->
+
+    <div style="overflow:auto;">
+        <table mat-table [dataSource]="listData" class="mat-elevation-z8" matSort matSortActive="EmployeeID" matSortDirection="desc" matSortDisableClear>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns:displayedColumns;"></tr>
+
+
+            <ng-container matColumnDef="EmployeeID">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>EmployeeID</th>
+
+                <td mat-header-cell *matCellDef="let element">{{element.employeeId}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="FirstName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>FirstName</th>
+                <td mat-header-cell *matCellDef="let element">{{element.firstName}}</td>
+            </ng-container>
+            <ng-container matColumnDef="LastName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>FirstName</th>
+                <td mat-header-cell *matCellDef="let element">{{element.lastName}}</td>
+            </ng-container>
+            <ng-container matColumnDef="EmpCode">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>EmpCode</th>
+                <td mat-header-cell *matCellDef="let element">{{element.empCode}}</td>
+            </ng-container>
+            <ng-container matColumnDef="Position">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Position</th>
+                <td mat-header-cell *matCellDef="let element">{{element.position}}</td>
+            </ng-container>
+            <ng-container matColumnDef="Office">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Office</th>
+                <td mat-header-cell *matCellDef="let element">{{element.office}}</td>
+            </ng-container>
+            <ng-container matColumnDef="Options">
+                <th mat-header-cell *matHeaderCellDef>Options</th>
+                <tr mat-cell *matCellDef="let row">
+                    <button mat-icon-button (click)="onEdit(row)">
+          <mat-icon>launch</mat-icon>
+        </button>
+                    <button mat-icon-button color="warn" (click)="onDelete(row.employeeId)">
+            <mat-icon>delete_outline</mat-icon>
+          </button>
+
+
+                </tr>
+
+            </ng-container>
+        </table>
+    </div>
+
+
+    <button class="mt-2" mat-raised-button color="primary" (click)="onAdd()">Add Department</button>
+
+
+</div>
